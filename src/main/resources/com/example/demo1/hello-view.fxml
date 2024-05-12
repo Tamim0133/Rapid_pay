@@ -1,18 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>-->
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="415.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
    <children>
-      <Button layoutX="106.0" layoutY="228.0" mnemonicParsing="false" onAction="#showName" prefHeight="26.0" prefWidth="138.0" text="ShowLastAdded" />
-      <TextField fx:id="text_field" layoutX="98.0" layoutY="123.0" prefHeight="37.0" prefWidth="197.0" />
-      <Button layoutX="312.0" layoutY="129.0" mnemonicParsing="false" onAction="#addNewName" prefHeight="26.0" prefWidth="89.0" text="AddNew" />
-      <Text layoutX="62.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Added :" wrappingWidth="71.21630859375" />
-      <Text layoutX="23.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add New User" wrappingWidth="219.21630859375" />
-      <TextArea fx:id="text_label" layoutX="142.0" layoutY="286.0" prefHeight="172.0" prefWidth="265.0" />
+      <AnchorPane fx:id="main_form" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <AnchorPane prefHeight="400.0" prefWidth="300.0" styleClass="left-from" stylesheets="@loginDesign.css">
+               <children>
+                  <FontAwesomeIcon fill="#fcf6f6" iconName="USERS" layoutX="102.0" layoutY="124.0" size="8em" />
+                  <Label layoutX="20.0" layoutY="161.0" text="Empleoyee Management System" textFill="#f8f6f6">
+                     <font>
+                        <Font name="Tahoma Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            <AnchorPane layoutX="300.0" prefHeight="400.0" prefWidth="300.0" styleClass="right-form" stylesheets="@loginDesign.css">
+               <children>
+                  <Label layoutX="48.0" layoutY="92.0" prefHeight="38.0" prefWidth="198.0" stylesheets="@loginDesign.css" text="Welcome Back Admin" textFill="#256b51">
+                     <font>
+                        <Font name="Tahoma Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="username" layoutX="47.0" layoutY="148.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="Username ..." styleClass="text-field" stylesheets="@loginDesign.css" />
+                  <PasswordField fx:id="password" layoutX="48.0" layoutY="208.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="Password ...." styleClass="text-field" stylesheets="@loginDesign.css" />
+                  <Button fx:id="login_btn" layoutX="47.0" layoutY="267.0" mnemonicParsing="false" onAction="#loginAdmin" prefHeight="40.0" prefWidth="220.0" styleClass="login_btn" stylesheets="@loginDesign.css" text="Login" />
+                  <Button fx:id="close" layoutX="241.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="65.0" styleClass="close" stylesheets="@loginDesign.css" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0">
+                     <graphic>
+                        <FontAwesomeIcon iconName="CLOSE" size="1.3em" />
+                     </graphic></Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

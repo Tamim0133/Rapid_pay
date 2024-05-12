@@ -45,6 +45,18 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/mysql-connector-j-8.4.0.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>de.jensd</groupId>
+            <artifactId>fontawesomefx</artifactId>
+            <version>8.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/fontawesomefx-8.1.jar</systemPath>
+
+        </dependency>
+        <!-- Thanks for using https://jar-download.com -->
+
+
+
     </dependencies>
 
     <build>
