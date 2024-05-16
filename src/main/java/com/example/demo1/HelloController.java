@@ -4,11 +4,13 @@ import com.mysql.cj.protocol.Resultset;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 
 import javax.xml.transform.Result;
+import java.io.IOException;
 import java.sql.*;
 
 import javafx.fxml.FXML;
@@ -67,6 +69,7 @@ public class HelloController {
             {
                 if(result.next())
                 {
+                    getData.userName = username.getText();
                     alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
@@ -94,6 +97,54 @@ public class HelloController {
                     stage.setScene(scene);
                     stage.show();
                 }
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        String sql_customer = "SELECT * FROM customer WHERE phnNum = ? and password = ?";
+
+        connect = Database.connectionDb();
+
+        try{
+            prepare = connect.prepareStatement(sql_customer);
+            prepare.setString(1,username.getText()); // phoneNumber
+            prepare.setString(2, password.getText()); // password
+
+            result = prepare.executeQuery();
+
+            Alert alert;
+            if(username.getText().isEmpty() || password.getText().isEmpty())
+            {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please Fill all blank");
+                alert.showAndWait();
+            }
+            else
+            {
+                if(result.next())
+                {
+                    getData.userName = username.getText();
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully Login");
+                    alert.showAndWait();
+
+                    login_btn.getScene().getWindow().hide();
+                    Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+
+
+                    stage.initStyle(StageStyle.TRANSPARENT);
+                    stage.setScene(scene);
+                    stage.show();
+                }
                 else
                 {
                     alert = new Alert(Alert.AlertType.ERROR);
@@ -113,11 +164,23 @@ public class HelloController {
     {
         System.exit(0);
     }
-
-
-
-
-
-
-
+    public void switchToRegistration () throws  IOException{
+        try{
+            System.out.println("Sign Up Clicked !");
+//            Parent root = FXMLLoader.load(getClass().getResource("registration.fxml"));
+//            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+//            Scene scene = new Scene(root);
+//            stage.setScene(scene);
+//            stage.show();
+            Parent root = FXMLLoader.load(getClass().getResource("registration.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.setScene(scene);
+            stage.show();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

@@ -125,6 +125,10 @@
     -fx-background-color : #ddd;
     -fx-text-fill : red;
 }
+.import-btn{
+    -fx-cursor:hand;
+}
+
 
 .add-btn{
     -fx-background-color:#2d5278;

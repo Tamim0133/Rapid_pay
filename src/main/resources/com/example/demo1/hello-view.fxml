@@ -31,13 +31,23 @@
                         <Font name="Tahoma Bold" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="username" layoutX="47.0" layoutY="148.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="Username ..." styleClass="text-field" stylesheets="@loginDesign.css" />
+                  <TextField fx:id="username" layoutX="47.0" layoutY="148.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="PhoneNumber ..." styleClass="text-field" stylesheets="@loginDesign.css" />
                   <PasswordField fx:id="password" layoutX="48.0" layoutY="208.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="Password ...." styleClass="text-field" stylesheets="@loginDesign.css" />
                   <Button fx:id="login_btn" layoutX="47.0" layoutY="267.0" mnemonicParsing="false" onAction="#loginAdmin" prefHeight="40.0" prefWidth="220.0" styleClass="login_btn" stylesheets="@loginDesign.css" text="Login" />
                   <Button fx:id="close" layoutX="241.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="65.0" styleClass="close" stylesheets="@loginDesign.css" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0">
                      <graphic>
                         <FontAwesomeIcon iconName="CLOSE" size="1.3em" />
                      </graphic></Button>
+                  <Label layoutX="61.0" layoutY="321.0" prefHeight="17.0" prefWidth="134.0" text="Don't Have and account ? ">
+                     <font>
+                        <Font name="Tahoma" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="195.0" layoutY="321.0" onMouseClicked="#switchToRegistration" prefHeight="14.0" prefWidth="55.0" style="-fx-cursor: hand;" text="Sign Up" textFill="#0178ff">
+                     <font>
+                        <Font name="Tahoma" size="12.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
