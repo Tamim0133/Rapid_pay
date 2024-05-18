@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
@@ -76,8 +77,12 @@
       </AnchorPane>
       <AnchorPane fx:id="navbar" prefHeight="44.0" prefWidth="1102.0" styleClass="top-form" stylesheets="@dashboardDesign.css">
          <children>
-            <FontAwesomeIcon iconName="USERS" layoutX="21.0" layoutY="27.0" size="1.5em" />
-            <Label layoutX="51.0" layoutY="9.0" prefHeight="23.0" prefWidth="115.0" text="Rapid Pay">
+            <ImageView fitHeight="44.0" fitWidth="37.0" layoutX="21.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo112-removebg.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="66.0" layoutY="11.0" prefHeight="23.0" prefWidth="115.0" text="Rapid Pay">
                <font>
                   <Font size="18.0" />
                </font>
@@ -102,7 +107,7 @@
                   <String fx:value="shadow" />
                </styleClass>
                <children>
-                  <AnchorPane fx:id="sendMoney_btn" layoutX="28.0" layoutY="89.0" onMouseClicked="#sendMoney_func" prefHeight="167.0" prefWidth="251.0" stylesheets="@dashboardDesign.css">
+                  <AnchorPane fx:id="sendMoney_Btn" layoutX="28.0" layoutY="89.0" onMouseClicked="#switchToSendMoneyPage" prefHeight="167.0" prefWidth="251.0" stylesheets="@dashboardDesign.css">
                      <styleClass>
                         <String fx:value="nav-form" />
                         <String fx:value="tamim" />
@@ -122,7 +127,7 @@
                         <FontAwesomeIcon fill="WHITE" iconName="MONEY" layoutX="21.0" layoutY="100.0" size="5em" text="" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="home_activeEmployees1" layoutX="313.0" layoutY="89.0" prefHeight="167.0" prefWidth="251.0" stylesheets="@dashboardDesign.css">
+                  <AnchorPane fx:id="mobileRecharge_Btn" layoutX="313.0" layoutY="89.0" onMouseClicked="#switchToMobileRechargePage" prefHeight="167.0" prefWidth="251.0" stylesheets="@dashboardDesign.css">
                      <styleClass>
                         <String fx:value="nav-form" />
                         <String fx:value="card" />
@@ -142,7 +147,7 @@
                         <FontAwesomeIcon fill="WHITE" iconName="USERS" layoutX="24.0" layoutY="102.0" size="5em" text="" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="home_activeEmployees11" layoutX="599.0" layoutY="89.0" prefHeight="167.0" prefWidth="241.0" stylesheets="@dashboardDesign.css">
+                  <AnchorPane fx:id="savings_Btn" layoutX="599.0" layoutY="89.0" onMouseClicked="#switchToSavingsPage" prefHeight="167.0" prefWidth="241.0" stylesheets="@dashboardDesign.css">
                      <styleClass>
                         <String fx:value="nav-form" />
                         <String fx:value="card" />
@@ -162,7 +167,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="home_activeEmployees2" layoutX="28.0" layoutY="302.0" prefHeight="167.0" prefWidth="251.0" stylesheets="@dashboardDesign.css">
+                  <AnchorPane fx:id="insurance_Btn" layoutX="28.0" layoutY="302.0" onMouseClicked="#switchToInsurancePage" prefHeight="167.0" prefWidth="251.0" stylesheets="@dashboardDesign.css">
                      <styleClass>
                         <String fx:value="nav-form" />
                         <String fx:value="card" />
@@ -177,7 +182,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="home_activeEmployees3" layoutX="313.0" layoutY="302.0" prefHeight="167.0" prefWidth="251.0" stylesheets="@dashboardDesign.css">
+                  <AnchorPane fx:id="loan_Btn" layoutX="313.0" layoutY="302.0" onMouseClicked="#switchToLoanPage" prefHeight="167.0" prefWidth="251.0" stylesheets="@dashboardDesign.css">
                      <styleClass>
                         <String fx:value="nav-form" />
                         <String fx:value="card" />
@@ -212,14 +217,14 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <Label layoutX="769.0" layoutY="15.0" text="Balance  :">
+                  <Label layoutX="599.0" layoutY="33.0" text="Balance :">
                      <font>
-                        <Font name="Tahoma Bold" size="15.0" />
+                        <Font name="Tahoma Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="currentBalance" alignment="CENTER" contentDisplay="CENTER" layoutX="743.0" layoutY="44.0" prefHeight="30.0" prefWidth="97.0" stylesheets="@dashboardDesign.css" textFill="#2f0c0c">
+                  <Label fx:id="currentBalance" alignment="CENTER" contentDisplay="CENTER" layoutX="701.0" layoutY="30.0" prefHeight="30.0" prefWidth="139.0" stylesheets="@dashboardDesign.css" textFill="#2f0c0c">
                      <font>
-                        <Font name="Tahoma Bold" size="24.0" />
+                        <Font name="Tahoma Bold" size="20.0" />
                      </font>
                      <styleClass>
                         <String fx:value="label-info" />

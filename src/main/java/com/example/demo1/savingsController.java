@@ -2,6 +2,7 @@ package com.example.demo1;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,12 +15,20 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class savingsController implements Initializable {
+public class savingsController extends Home implements Initializable {
 
     ObservableList<String> durationList = FXCollections.observableArrayList("2 years",
             "3 years", "5 years", "7 years");
@@ -39,6 +48,7 @@ public class savingsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         durationBox.setValue("2 years");
         durationBox.setItems(durationList);
+        System.out.println("Initialize Hoise !");
     }
     @FXML
     ImageView myImageView;
@@ -49,7 +59,11 @@ public class savingsController implements Initializable {
     public int amount;
 
 
-    public void conditionCheck(MouseEvent mouseEvent) throws  IOException{
+    customerData cus = Home.cus;
+
+
+    public void conditionCheck(ActionEvent event) throws IOException, SQLException {
+        System.out.println("Function e ashchi !");
         sendAmount = money.getText();
         pass = passwordField.getText();
         Integer integer = 0;
@@ -60,18 +74,75 @@ public class savingsController implements Initializable {
         }
         amount = integer;
 
-
+        boolean ok = true;
 
         // eta thik kora lagbe
         if(amount <500 ){
             showAlert("Amount should be greater than Tk. 500!!!");
+            ok = false;
         }
         else if(pass.length() == 0){
             showAlert("Invalid password!!!!!");
+            ok = false;
         }
+        if(!Objects.equals(cus.getPassword(), pass))
+            ok = false;
+        if(amount > cus.getBalance())
+            ok = false;
 
-        else{
-            showNotification();
+        System.out.println("Ok , Outside ok ! "+ ok);
+        if(ok)
+        {
+            System.out.println("Ok , inside ok !");
+            Connection connect = Database.connectionDb();
+            String updateQuery = "UPDATE customer SET balance = ? WHERE phnNum = ?";
+            PreparedStatement pstmt = connect.prepareStatement(updateQuery);
+
+            pstmt.setInt(1, cus.getBalance() - amount);
+            pstmt.setString(2, cus.getPhoneNum());
+
+            int rowsAffected = pstmt.executeUpdate();
+
+            Alert alert;
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Successfully Money Added to Savings Account!\n Please Log In again !!!.");
+            alert.showAndWait();
+
+            next.getScene().getWindow().hide();
+
+            //LINK YOUR LOGIN FORM
+            Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+
+            stage.initStyle(StageStyle.TRANSPARENT);
+
+            stage.setScene(scene);
+            stage.show();
+//
+            BufferedWriter writer = new BufferedWriter(new FileWriter("cashOutInfo.txt", true)); // Append mode
+
+            writer.write(cus.getPhoneNum());
+
+            writer.write(" ");
+
+            String strAmount = Integer.toString(amount);
+            writer.write(strAmount);
+            writer.write(" ");
+
+            LocalDateTime currentDateTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy HH:mm:ss");
+            String formattedTime = currentDateTime.format(formatter);
+
+            writer.write(formattedTime);
+            writer.newLine();
+            writer.close();
+        }
+        else
+        {
+            showAlert("Unsuccessfull ! \n Savings could not happen at this moment .");
         }
 
 
@@ -85,70 +156,18 @@ public class savingsController implements Initializable {
         alert.setContentText(s);
         alert.showAndWait();
     }
-    public void showNotification() throws IOException{
-        try {
-
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmation Message");
-            alert.setHeaderText(null);
-            alert.setContentText("Are you sure to start savings?");
-
-            Optional<ButtonType> option = alert.showAndWait();
-
-            if (option.get().equals(ButtonType.OK)) {
-
-                //HIDE YOUR DASHBOARD FORM
-//            logout.getScene().getWindow().hide();
-
-                //LINK YOUR LOGIN FORM
-                Parent root = null;
-                try {
-                    root = FXMLLoader.load(getClass().getResource("registration.fxml"));
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-
-                root.setOnMousePressed((MouseEvent event) -> {
-                    x = event.getSceneX();
-                    y = event.getSceneY();
-                });
-
-                root.setOnMouseDragged((MouseEvent event) -> {
-                    stage.setX(event.getScreenX() - x);
-                    stage.setY(event.getScreenY() - y);
-
-                    stage.setOpacity(.8);
-                });
-
-                root.setOnMouseReleased((MouseEvent event) -> {
-                    stage.setOpacity(1);
-                });
-
-                stage.initStyle(StageStyle.TRANSPARENT);
-
-                stage.setScene(scene);
-                stage.show();
-
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    Image myImage = new Image(getClass().getResourceAsStream("logo112-removebg.png"));
-    public  void displayImage()
-    {
-        myImageView.setImage(myImage);
-    }
 
     public void backToHomePage(MouseEvent mouseEvent) throws IOException {
         back.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(getClass().getResource("registration.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("home.fxml"));
+        Parent root = loader.load();
+
+        Home home = loader.getController();
+        home.setHomeCustomer(cus);//
+
         Stage stage = new Stage();
         Scene scene = new Scene(root);
-
 
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setScene(scene);

@@ -24,6 +24,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -173,6 +174,29 @@ public class Home implements Initializable {
     @FXML
     private TextField cashOutAmount;
 
+    @FXML
+    private AnchorPane sendMoney_Btn;
+
+    @FXML
+    private AnchorPane mobileRecharge_Btn;
+
+    @FXML
+    private AnchorPane savings_Btn;
+
+    @FXML
+    private AnchorPane loan_Btn;
+
+    @FXML
+    private AnchorPane insurance_Btn;
+
+    @FXML
+    private Button health_Btn;
+
+    @FXML
+    private Button life_Btn;
+
+
+
 
 
     private currentLoggedInCustomer c;
@@ -193,16 +217,84 @@ public class Home implements Initializable {
     private Image image2;
 
 
-    customerData cus;
+    static customerData cus;
 
-    public void switchToSendMoneyPage(MouseEvent mouseEvent)throws Exception{
+//    Home()
+//    {
+//        super(cus);
+//    }
 
+
+    public void switchToSendMoneyPage(MouseEvent mouseEvent) throws IOException {
+        sendMoney_Btn.getScene().getWindow().hide();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sendMoney.fxml"));
+        Parent root = loader.load();
+
+        sendMoneyController send = loader.getController();
+//        send.setHomeCustomer(cus);//
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToMobileRechargePage(MouseEvent mouseEvent) throws IOException {
+        mobileRecharge_Btn.getScene().getWindow().hide();
+        Parent root = FXMLLoader.load(getClass().getResource("mobileRecharge.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToSavingsPage(MouseEvent mouseEvent) throws IOException {
+        savings_Btn.getScene().getWindow().hide();
+        Parent root = FXMLLoader.load(getClass().getResource("savings.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToLoanPage(MouseEvent mouseEvent) throws IOException {
+        loan_Btn.getScene().getWindow().hide();
+        Parent root = FXMLLoader.load(getClass().getResource("loan.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToInsurancePage(MouseEvent mouseEvent) throws IOException {
+        insurance_Btn.getScene().getWindow().hide();
+        Parent root = FXMLLoader.load(getClass().getResource("insurance.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void setHomeCustomer(customerData customer)
     {
 
         cus = customer;
+
         customer.printInfo();
 
         try{
@@ -230,6 +322,8 @@ public class Home implements Initializable {
         cashInCol.setCellValueFactory(new PropertyValueFactory<cashInType, Integer>("amount"));
         timeCol1.setCellValueFactory(new PropertyValueFactory<cashInType, String>("time"));
         cashInCol1.setCellValueFactory(new PropertyValueFactory<cashInType, Integer>("amount"));
+
+       // setHomeCustomer(cus);
 
     }
 
@@ -347,7 +441,12 @@ public class Home implements Initializable {
             cash_out_page.setVisible(false);
             history_page.setVisible(false);
 
-            if(cus.getImgUri() == "") {
+            if(Objects.equals(cus.getImgUri(), "0")) {
+                addEmployee_importBtn.setVisible(true);
+                addEmployeeUpdateBtn.setVisible(true);
+            }
+            else
+            {
                 addEmployee_importBtn.setVisible(false);
                 addEmployeeUpdateBtn.setVisible(false);
             }
@@ -709,7 +808,7 @@ public class Home implements Initializable {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
-                alert.setContentText("Please fill all blank fields");
+                alert.setContentText("Please Insert Image");
                 alert.showAndWait();
             }else{
                 String check = "SELECT phnNum FROM image WHERE phnNum = '"

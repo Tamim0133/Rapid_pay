@@ -12,6 +12,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -211,7 +213,9 @@ public class HelloController {
                             Parent root = loader.load();
 
                             Home home = loader.getController();
-                            home.setHomeCustomer(customer);
+                            home.setHomeCustomer(customer);//
+
+
 
                             Stage stage = new Stage();
                             Scene scene = new Scene(root);

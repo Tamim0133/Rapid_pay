@@ -11,7 +11,7 @@ public class customerData {
     private String password;
     private String email;
     private int balance;
-    private String imgUri = "";
+    private String imgUri = "0";
 
     public customerData(String firstName, String lastName, String gender,String nid,String dob, String phoneNum, String email,   String password, int balance){
         this.firstName = firstName ;

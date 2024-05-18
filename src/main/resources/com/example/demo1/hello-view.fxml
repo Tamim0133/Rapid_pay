@@ -7,6 +7,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
@@ -17,12 +19,11 @@
          <children>
             <AnchorPane prefHeight="400.0" prefWidth="300.0" styleClass="left-from" stylesheets="@loginDesign.css">
                <children>
-                  <FontAwesomeIcon fill="#fcf6f6" iconName="USERS" layoutX="102.0" layoutY="124.0" size="8em" />
-                  <Label layoutX="20.0" layoutY="161.0" text="Empleoyee Management System" textFill="#f8f6f6">
-                     <font>
-                        <Font name="Tahoma Bold" size="16.0" />
-                     </font>
-                  </Label>
+                  <ImageView fitHeight="205.0" fitWidth="214.0" layoutX="42.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo112-removebg.png" />
+                     </image>
+                  </ImageView>
                </children></AnchorPane>
             <AnchorPane layoutX="300.0" prefHeight="400.0" prefWidth="300.0" styleClass="right-form" stylesheets="@loginDesign.css">
                <children>

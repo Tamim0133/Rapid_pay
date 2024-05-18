@@ -19,7 +19,7 @@
       <TextField fx:id="number" layoutX="342.0" layoutY="103.0" prefHeight="25.0" prefWidth="230.0" promptText="Enter number...." />
       <TextField fx:id="money" layoutX="342.0" layoutY="148.0" prefHeight="25.0" prefWidth="230.0" promptText="Enter amount...." />
       <TextField fx:id="passwordField" layoutX="342.0" layoutY="188.0" prefHeight="25.0" prefWidth="230.0" promptText="Enter password...." />
-      <Button fx:id="next" layoutX="466.0" layoutY="303.0" mnemonicParsing="false" onMouseClicked="#conditionCheck" styleClass="login_btn" text="Next&gt;">
+      <Button fx:id="next" layoutX="466.0" layoutY="303.0" mnemonicParsing="false" onAction="#sendMoneyFunc" styleClass="login_btn" text="Next&gt;">
          <font>
             <Font size="16.0" />
          </font>
@@ -45,7 +45,7 @@
       </Label>
       <AnchorPane prefHeight="406.0" prefWidth="266.0" styleClass="nav-form" stylesheets="@dashboardDesign.css">
          <children>
-            <ImageView fx:id="myImageView" fitHeight="244.0" fitWidth="264.0" layoutX="11.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="myImageView" fitHeight="210.0" fitWidth="217.0" layoutX="28.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo112-removebg.png" />
                </image>

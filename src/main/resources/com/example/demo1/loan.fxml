@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="nav-form" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.loanController">
+    <stylesheets>
+        <URL value="@dashboardDesign.css" />
+        <URL value="@registrationDesign.css" />
+    </stylesheets>
+    <children>
+        <Label layoutX="178.0" prefHeight="58.0" prefWidth="213.0" text="Loan Policy" textFill="WHITE">
+            <font>
+                <Font size="40.0" />
+            </font>
+        </Label>
+        <Label layoutX="23.0" layoutY="263.0" prefHeight="25.0" prefWidth="261.0" text="Enter the loan amount you want     : " textFill="WHITE">
+            <font>
+                <Font size="16.0" />
+            </font></Label>
+        <TextArea layoutX="25.0" layoutY="58.0" prefHeight="137.0" prefWidth="552.0" text="We have different loan policy.&#10;1. 5% Interest for duration 2 years.&#10;2. 6% Interest for duration 3 years.&#10;3. 7% Interest for duration 5 years.&#10;4. 8% Interest for duration 7 years.">
+            <font>
+                <Font size="16.0" />
+            </font></TextArea>
+        <Label layoutX="23.0" layoutY="220.0" prefHeight="25.0" prefWidth="261.0" text="please select payback time interval : " textFill="WHITE">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+        <ComboBox fx:id="durationBox" layoutX="284.0" layoutY="220.0" prefHeight="25.0" prefWidth="193.0" promptText="select duration" />
+        <Button fx:id="next" layoutX="327.0" layoutY="351.0" mnemonicParsing="false" onMouseClicked="#conditionCheck" prefHeight="25.0" prefWidth="108.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Get Loan">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+        <TextField fx:id="money" layoutX="284.0" layoutY="263.0" prefHeight="26.0" prefWidth="193.0" promptText="10000 &lt;=amount&lt;=200000" />
+        <Label layoutX="178.0" layoutY="309.0" prefHeight="25.0" prefWidth="101.0" text="Password      : " textFill="WHITE">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+        <TextField fx:id="passwordField" layoutX="284.0" layoutY="308.0" prefHeight="26.0" prefWidth="193.0" promptText="Enter your password" />
+        <Button fx:id="back" layoutX="154.0" layoutY="351.0" mnemonicParsing="false" onMouseClicked="#backToHomePage" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="&lt;Back">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>

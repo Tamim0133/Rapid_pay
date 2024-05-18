@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.bikeController">
+    <children>
+        <AnchorPane layoutX="90.0" layoutY="58.0" prefHeight="155.0" prefWidth="420.0" styleClass="nav-form">
+            <stylesheets>
+                <URL value="@registrationDesign.css" />
+                <URL value="@dashboardDesign.css" />
+            </stylesheets>
+            <children>
+                <Label layoutX="120.0" layoutY="14.0" prefHeight="21.0" prefWidth="208.0" text="Per month donation : Tk. 2000" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="170.0" layoutY="44.0" prefHeight="17.0" prefWidth="121.0" text="Duration : 2 Years" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="58.0" layoutY="78.0" prefHeight="25.0" prefWidth="304.0" text="Maximum amount will be paid : Tk. 75000" textFill="WHITE">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Button fx:id="next" layoutX="186.0" layoutY="116.0" mnemonicParsing="false" onMouseClicked="#showNotification" prefHeight="25.0" prefWidth="85.0" text="Purchase">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="92.0" layoutY="237.0" prefHeight="149.0" prefWidth="420.0" styleClass="nav-form">
+            <stylesheets>
+                <URL value="@dashboardDesign.css" />
+                <URL value="@registrationDesign.css" />
+            </stylesheets>
+            <children>
+                <Label layoutX="109.0" layoutY="14.0" prefHeight="17.0" prefWidth="208.0" text="Per month donation : Tk. 4000" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="164.0" layoutY="38.0" prefHeight="17.0" prefWidth="121.0" text="Duration : 4 Years" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="51.0" layoutY="66.0" prefHeight="25.0" prefWidth="304.0" text="Maximum amount will be paid : Tk. 25000" textFill="WHITE">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Button layoutX="180.0" layoutY="110.0" mnemonicParsing="false" onMouseClicked="#showNotification" prefHeight="25.0" prefWidth="85.0" text="Purchase">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+        <Label layoutX="106.0" prefHeight="17.0" prefWidth="406.0" text="Bike Insurance Policy">
+            <font>
+                <Font size="40.0" />
+            </font>
+        </Label>
+        <Button fx:id="back" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#backToInsurance" styleClass="logout" text="&lt;Back" textFill="WHITE">
+            <stylesheets>
+                <URL value="@registrationDesign.css" />
+                <URL value="@dashboardDesign.css" />
+            </stylesheets>
+        </Button>
+    </children>
+</AnchorPane>

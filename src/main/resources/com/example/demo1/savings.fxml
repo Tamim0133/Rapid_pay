@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="nav-form" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.savingsController">
+    <stylesheets>
+        <URL value="@dashboardDesign.css" />
+        <URL value="@registrationDesign.css" />
+    </stylesheets>
+    <children>
+        <Label layoutX="157.0" prefHeight="58.0" prefWidth="287.0" text="Savings Policy" textFill="WHITE">
+            <font>
+                <Font size="40.0" />
+            </font>
+        </Label>
+        <Label layoutX="39.0" layoutY="264.0" prefHeight="25.0" prefWidth="237.0" text="Enter per month deposite amount : " textFill="WHITE">
+            <font>
+                <Font size="16.0" />
+            </font></Label>
+        <TextArea layoutX="25.0" layoutY="58.0" prefHeight="137.0" prefWidth="552.0" text="We have different savings policy.&#10;1. 5% Interest for duration 2 years.&#10;2. 6% Interest for duration 3 years.&#10;3. 7% Interest for duration 5 years.&#10;4. 8% Interest for duration 7 years.">
+            <font>
+                <Font size="16.0" />
+            </font></TextArea>
+        <Label layoutX="84.0" layoutY="221.0" prefHeight="25.0" prefWidth="193.0" text=" please select time interval  : " textFill="WHITE">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+        <ComboBox fx:id="durationBox" layoutX="277.0" layoutY="220.0" prefHeight="25.0" prefWidth="193.0" promptText="select duration" />
+        <Button fx:id="next" layoutX="300.0" layoutY="342.0" mnemonicParsing="false" onAction="#conditionCheck" onMouseClicked="#conditionCheck" prefHeight="31.0" prefWidth="112.0" styleClass="add-btn" text="Start Saving">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+        <TextField fx:id="money" layoutX="277.0" layoutY="263.0" prefHeight="26.0" prefWidth="193.0" promptText="amount should &gt;= Tk. 500" />
+        <Label layoutX="190.0" layoutY="299.0" prefHeight="26.0" prefWidth="87.0" text="Password : " textFill="WHITE">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Label>
+        <TextField fx:id="passwordField" layoutX="277.0" layoutY="299.0" prefHeight="26.0" prefWidth="193.0" promptText="Enter your password" />
+        <Button fx:id="back" layoutX="150.0" layoutY="342.0" mnemonicParsing="false" onMouseClicked="#backToHomePage" prefHeight="31.0" prefWidth="81.0" styleClass="add-btn" text="&lt;Back">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>
