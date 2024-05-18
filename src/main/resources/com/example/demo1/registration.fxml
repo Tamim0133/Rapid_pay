@@ -49,7 +49,7 @@
             <TextField fx:id="registration_lastName" layoutX="118.0" layoutY="134.0" prefHeight="34.0" prefWidth="149.0" styleClass="text-field" stylesheets="@registrationDesign.css" />
             <ComboBox fx:id="registration_gender" layoutX="118.0" layoutY="187.0" prefHeight="34.0" prefWidth="150.0" promptText="Choose ..." />
             <DatePicker fx:id="registration_DOB" layoutX="73.0" layoutY="362.0" onAction="#getDate" promptText="Enter DOB" />
-            <Button layoutX="69.0" layoutY="424.0" mnemonicParsing="false" onAction="#registerBtn" prefHeight="34.0" prefWidth="139.0" styleClass="login_btn" stylesheets="@registrationDesign.css" text="Register" />
+            <Button fx:id="registrationBtn" layoutX="69.0" layoutY="424.0" mnemonicParsing="false" onAction="#registerBtn" prefHeight="34.0" prefWidth="139.0" styleClass="login_btn" stylesheets="@registrationDesign.css" text="Register" />
             <Label layoutX="17.0" layoutY="251.0" text="NID No :">
                <font>
                   <Font name="Tahoma" size="16.0" />

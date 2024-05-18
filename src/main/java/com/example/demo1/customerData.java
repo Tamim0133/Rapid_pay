@@ -10,8 +10,10 @@ public class customerData {
     private String nid;
     private String password;
     private String email;
+    private int balance;
+    private String imgUri = "";
 
-    public void customerData(String firstName, String lastName, String gender, String phoneNum, String dob, String nid, String password , String email){
+    public customerData(String firstName, String lastName, String gender,String nid,String dob, String phoneNum, String email,   String password, int balance){
         this.firstName = firstName ;
         this.lastName = lastName;
         this.gender = gender;
@@ -20,8 +22,12 @@ public class customerData {
         this.nid = nid;
         this.password = password;
         this.email = email;
+        this.balance = balance;
     }
-
+    public void setImgUri(String u){
+        imgUri = u;
+    }
+    public String getImgUri(){return imgUri;}
     public String getFirstName(){
         return firstName;
     }
@@ -45,6 +51,20 @@ public class customerData {
     }
     public String getEmail(){
         return email;
+    }
+    public int getBalance(){return balance;}
+
+    public void printInfo()
+    {
+        System.out.println("Name : " + firstName);
+        System.out.println("LastName ; " + lastName);
+        System.out.println("Email :" + email);
+        System.out.println("Password :" + password);
+        System.out.println("Nid : " + nid);
+        System.out.println("Phone Num : " + phoneNum);
+        System.out.println("Gender : " + gender);
+        System.out.println("Date of Birth : " + dob);
+        System.out.println("Balance : " + balance);
     }
 }
 

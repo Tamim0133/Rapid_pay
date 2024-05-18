@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.EmployeePage">
+   <TableView fx:id="transactions" layoutX="309.0" layoutY="77.0" onMouseClicked="#rowClicked" prefHeight="246.0" prefWidth="225.0" stylesheets="@dashboardDesign.css">
+      <columns>
+         <TableColumn fx:id="phnCol" prefWidth="135.0" text="Phn Num" />
+         <TableColumn fx:id="amountCol" prefWidth="88.0" text="Amount" />
+      </columns>
+   </TableView>
+   <VBox layoutX="67.0" layoutY="100.0" prefHeight="200.0" prefWidth="160.0" spacing="5.0">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phn Num :" />
+      <TextField fx:id="inputPhn" editable="false" stylesheets="@dashboardDesign.css" />
+      <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount :" />
+      <TextField fx:id="inputAmount" editable="false" stylesheets="@dashboardDesign.css" />
+      <!--            <Text layoutX="10.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />-->
+      <!--            <TextField fx:id="inputName" />-->
+      <Button mnemonicParsing="false" onAction="#submit" prefHeight="32.0" prefWidth="160.0" styleClass="login_btn" text="Permit">
+         <stylesheets>
+            <URL value="@dashboardDesign.css" />
+            <URL value="@loginDesign.css" />
+         </stylesheets></Button>
+   </VBox>
+   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="14.0" prefHeight="26.0" prefWidth="234.0" styleClass="label-info" stylesheets="@dashboardDesign.css" text="CahsIN Requests " />
+   <Button fx:id="logout" layoutX="24.0" layoutY="343.0" minWidth="43.0" mnemonicParsing="false" onAction="#setLogout" prefHeight="34.0" prefWidth="43.0" stylesheets="@dashboardDesign.css">
+      <graphic>
+         <FontAwesomeIcon fill="#eeeeee" iconName="SIGN_OUT" size="2em" text="" />
+      </graphic>
+      <styleClass>
+         <String fx:value="logout" />
+         <String fx:value="shadow" />
+      </styleClass>
+   </Button>
+   <Button fx:id="close" layoutX="534.0" layoutY="1.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="65.0" styleClass="close" stylesheets="@loginDesign.css">
+      <graphic>
+         <FontAwesomeIcon iconName="CLOSE" size="1.3em" />
+      </graphic>
+   </Button>
+</AnchorPane>

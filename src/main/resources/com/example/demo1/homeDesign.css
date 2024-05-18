@@ -39,9 +39,7 @@
     -fx-font-family:"Arial";
     -fx-alignment:CENTER-LEFT;
 }
-.tamim{
-    -fx-cursor:hand;
-}
+
 .logout{
     -fx-background-color:#2c84bf;
     -fx-background-radius:10px;

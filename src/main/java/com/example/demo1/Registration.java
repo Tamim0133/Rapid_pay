@@ -5,11 +5,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -58,6 +65,9 @@ public class Registration implements  Initializable
     @FXML
     private AnchorPane right_form;
 
+    @FXML
+    private Button registrationBtn;
+
     private String firstName , lastName , gender, dateOfBirth, nidNum,phoneNo, emailNo, password;
 
     @FXML
@@ -84,10 +94,7 @@ public class Registration implements  Initializable
     }
 
     @FXML
-    void registerBtn(ActionEvent event) {
-        LocalDate myDate = registration_DOB.getValue();
-        dateOfBirth = myDate.format(DateTimeFormatter.ofPattern("MMM-dd-yyyy"));
-        System.out.println(dateOfBirth);
+    void registerBtn(ActionEvent event) throws IOException {
 
         firstName = registration_firstName.getText();
         lastName = registration_lastName.getText();
@@ -97,13 +104,38 @@ public class Registration implements  Initializable
         gender = (String) registration_gender.getSelectionModel().getSelectedItem();
         password = registration_password.getText();
 
-        System.out.println(firstName);
-        System.out.println(lastName);
-        System.out.println(nidNum);
-        System.out.println(phoneNo);
-        System.out.println(emailNo);
 
-        addemployeeAdd();
+        Alert alert;
+        if (
+                firstName.isEmpty()
+                        || lastName.isEmpty()
+                        || gender.isEmpty()
+                        || nidNum.isEmpty()
+                        || phoneNo.isEmpty()
+                        || emailNo.isEmpty()
+                        || password.isEmpty()) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all blank fields");
+            alert.showAndWait();
+        }
+        else
+        {
+
+            LocalDate myDate = registration_DOB.getValue();
+            dateOfBirth = myDate.format(DateTimeFormatter.ofPattern("MMM-dd-yyyy"));
+            System.out.println(dateOfBirth);
+
+            System.out.println(firstName);
+            System.out.println(lastName);
+            System.out.println(nidNum);
+            System.out.println(phoneNo);
+            System.out.println(emailNo);
+
+            addemployeeAdd();
+
+        }
     }
 
     @Override
@@ -194,8 +226,21 @@ public class Registration implements  Initializable
                     alert.setContentText("Successfully Added!");
                     alert.showAndWait();
 
+                    customerData Customer = new customerData( firstName,  lastName,  gender, nidNum, dateOfBirth,  phoneNo,  emailNo,    password,  0 );
+                    registrationBtn.getScene().getWindow().hide();
 
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("home.fxml"));
+                    Parent root = loader.load();
 
+                    Home home = loader.getController();
+                    home.setHomeCustomer(Customer);
+
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+
+                    stage.initStyle(StageStyle.TRANSPARENT);
+                    stage.setScene(scene);
+                    stage.show();
                 }
             }
 
