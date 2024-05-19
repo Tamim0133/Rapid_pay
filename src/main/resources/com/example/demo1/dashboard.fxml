@@ -30,7 +30,7 @@
                         <AnchorPane layoutX="68.0" layoutY="-77.0" prefHeight="35.0" prefWidth="1100.0" styleClass="top-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <FontAwesomeIcon iconName="USERS" layoutX="21.0" layoutY="27.0" size="1.5em" />
-                              <Label layoutX="51.0" layoutY="9.0" text="Employee Management System">
+                              <Label layoutX="51.0" layoutY="9.0" text="Rapid Pay">
                                  <font>
                                     <Font size="18.0" />
                                  </font>

@@ -199,19 +199,22 @@ public class sendMoneyController extends Home implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else if (cus.getPassword() != enteredPassword) {
+        } else if (!cus.getPassword().equals(enteredPassword) ){
             Alert alert;
             alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("Unsuccessful! \n  Wrong Password  !");
+            alert.showAndWait();
 
-        } else if (currBalance < toGiveAmount) {
+        } else if (cus.getBalance() < toGiveAmount) {
             Alert alert;
             alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("Unsuccessful! \n Insufficient Balance  ");
+            alert.showAndWait();
+
 
         } else if (!found_user) {
             Alert alert;
@@ -219,6 +222,8 @@ public class sendMoneyController extends Home implements Initializable {
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("Unsuccessful! \n  Make Sure that the given number is a user with rapid pay account ! ");
+            alert.showAndWait();
+
 
         } else {
             System.out.println("None were Ful filled !");
